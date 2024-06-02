@@ -92,7 +92,10 @@ public struct NodeInfoManager {
 
             /// 5. Discovery for media types other than application/json is left unspecified.
             /// **Implementation note**: We ignore the mime type and try to parse response data as JSON.
-            assert(httpUrlResponse.mimeType == "application/json")
+          //  assert(httpUrlResponse.mimeType == "application/json")
+            if (httpUrlResponse.mimeType != "application/json") {
+                throw Error.unsupported // todo - more specific error
+            }
 
             /// 6. A client should follow the link matching the highest schema version it supports.
             let wellKnownNodeInfo = try jsonDecoder.decode(WellKnownNodeInfo.self, from: data)
@@ -127,7 +130,6 @@ public struct NodeInfoManager {
     /// - Throws ``NodeInfoManager/Error`` or ``Swift.Error`` in case of a network error.
     public func fetch(for domain: String) async throws -> NodeInfo {
         let nodeInfoUrl = try await discoverNodeInfoUrlFromWellKnownNodeInfo(for: domain)
-
         var request = URLRequest(url: nodeInfoUrl)
 
         /// The spec: http://nodeinfo.diaspora.software/protocol.html
