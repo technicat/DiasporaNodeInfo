@@ -56,9 +56,12 @@ extension NodeInfo: Decodable {
             self = .v2_1(nodeInfo)
 
         default:
-            throw DecodingError.typeMismatch(NodeInfo.self, .init(
-                codingPath: decoder.codingPath,
-                debugDescription: "Received unsupported NodeInfo version '\(versionString)'"))
+            // kludge, iceshrimp.net has instance version
+            let nodeInfo = try DiasporaNodeInfo.v2_0.NodeInfo(from: decoder)
+            self = .v2_0(nodeInfo)
+//            throw DecodingError.typeMismatch(NodeInfo.self, .init(
+//                codingPath: decoder.codingPath,
+//                debugDescription: "Received unsupported NodeInfo version '\(versionString)'"))
         }
     }
 }
