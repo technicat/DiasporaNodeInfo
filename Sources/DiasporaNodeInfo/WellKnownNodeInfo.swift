@@ -30,4 +30,14 @@ struct WellKnownNodeInfo: Decodable {
     }
 
     let links: [Link]
+    
+    // micro.blog just returns one Link, not in an array
+    enum CodingKeys: CodingKey {
+      case links
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.links = try (try? container.decode([Link].self, forKey: .links)) ?? [container.decode(Link.self, forKey: .links)]
+    }
 }
