@@ -57,6 +57,8 @@ extension NodeInfo: Decodable {
 
         default:
             // kludge, iceshrimp.net has instance version
+            // now fixed, but keep this here just in case
+            // should log a warning, though
             let nodeInfo = try DiasporaNodeInfo.v2_0.NodeInfo(from: decoder)
             self = .v2_0(nodeInfo)
 //            throw DecodingError.typeMismatch(NodeInfo.self, .init(
