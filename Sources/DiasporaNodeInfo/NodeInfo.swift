@@ -11,12 +11,15 @@ public enum NodeInfo {
     case v2_0(DiasporaNodeInfo.v2_0.NodeInfo)
     /// NodeInfo schema version 2.1
     case v2_1(DiasporaNodeInfo.v2_1.NodeInfo)
+    /// NodeInfo schema version 2.1
+    case v2_2(DiasporaNodeInfo.v2_2.NodeInfo)
 
     /// Returns the version of the NodeInfo schema that is supported by the queried domain.
     public var version: WellKnownNodeInfoSchema {
         switch self {
         case .v2_0: return .v2_0
         case .v2_1: return .v2_1
+        case .v2_2: return .v2_2
         }
     }
 
@@ -31,6 +34,14 @@ public enum NodeInfo {
     /// Returns the value the nodeinfo data assuming it was v2.1 schema; or nil if server supports a different version.
     public var v2_1: DiasporaNodeInfo.v2_1.NodeInfo? {
         if case let .v2_1(value) = self {
+            return value
+        }
+        return nil
+    }
+    
+    /// Returns the value the nodeinfo data assuming it was v2.2 schema; or nil if server supports a different version.
+    public var v2_2: DiasporaNodeInfo.v2_2.NodeInfo? {
+        if case let .v2_2(value) = self {
             return value
         }
         return nil
@@ -54,7 +65,11 @@ extension NodeInfo: Decodable {
         case "2.1":
             let nodeInfo = try DiasporaNodeInfo.v2_1.NodeInfo(from: decoder)
             self = .v2_1(nodeInfo)
-
+            
+        case "2.2":
+            let nodeInfo = try DiasporaNodeInfo.v2_2.NodeInfo(from: decoder)
+            self = .v2_2(nodeInfo)
+            
         default:
             // kludge, iceshrimp.net has instance version
             // now fixed, but keep this here just in case

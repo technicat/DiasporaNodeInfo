@@ -10,17 +10,19 @@ import Foundation
 public enum WellKnownNodeInfoSchema: String, CustomDebugStringConvertible, Sendable {
     case v2_0 = "http://nodeinfo.diaspora.software/ns/schema/2.0"
     case v2_1 = "http://nodeinfo.diaspora.software/ns/schema/2.1"
+    case v2_2 = "http://nodeinfo.diaspora.software/ns/schema/2.2"
 
-    /// Returns the schema string, e.g. `http://nodeinfo.diaspora.software/ns/schema/2.1`
+    /// Returns the schema string, e.g. `http://nodeinfo.diaspora.software/ns/schema/2.2`
     public var schema: String {
         rawValue
     }
 
-    /// Returns the version string of the supported schema, e.g. `2.1`.
+    /// Returns the version string of the supported schema, e.g. `2.2`.
     public var shortVersionString: String {
         switch self {
         case .v2_0: return "2.0"
         case .v2_1: return "2.1"
+        case .v2_2: return "2.2"
         }
     }
 
@@ -30,5 +32,6 @@ public enum WellKnownNodeInfoSchema: String, CustomDebugStringConvertible, Senda
     public static let allOrderedSchemas: [WellKnownNodeInfoSchema] = [
         .v2_0,
         .v2_1,
+        .v2_2,
     ]
 }
