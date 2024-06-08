@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NodeInfoV2.swift
 //  
 //
 //  Created by Philip Chu on 6/8/24.
@@ -191,4 +191,17 @@ extension DiasporaNodeInfo.v2_2.NodeInfo: NodeInfoV2 {
   public var localComments: UInt? {
     usage.localComments
   }
+}
+
+extension NodeInfoManager {
+
+  public func getInfo(for domain: String) async throws -> NodeInfoV2 {
+    let info = try await fetch(for: domain)
+    switch info {
+    case .v2_0(let info): return info
+    case .v2_1(let info): return info
+    case .v2_2(let info): return info
+    }
+  }
+
 }
