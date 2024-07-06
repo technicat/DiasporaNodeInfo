@@ -29,19 +29,19 @@ struct NodeInfoCLI: AsyncParsableCommand {
                 print("\tProtocols: \(nodeinfo.protocols.map(\.debugDescription).joined(separator: ", "))")
 
                 print("\tUsage:")
-                if let total = nodeinfo.usage.users.total {
+                if let total = nodeinfo.usage.users.total?.value {
                     print("\t\tUsers (total): \(total)")
                 }
-                if let activeMonth = nodeinfo.usage.users.activeMonth {
+                if let activeMonth = nodeinfo.usage.users.activeMonth?.value {
                     print("\t\tUsers (active last month): \(activeMonth)")
                 }
-                if let activeHalfyear = nodeinfo.usage.users.activeHalfyear {
+                if let activeHalfyear = nodeinfo.usage.users.activeHalfyear?.value {
                     print("\t\tUsers (active last 6 months): \(activeHalfyear)")
                 }
-                if let localPosts = nodeinfo.usage.localPosts {
+                if let localPosts = nodeinfo.usage.localPosts?.value {
                     print("\t\tLocal posts: \(localPosts)")
                 }
-                if let localComments = nodeinfo.usage.localComments {
+                if let localComments = nodeinfo.usage.localComments?.value {
                     print("\t\tLocal posts: \(localComments)")
                 }
 
@@ -61,25 +61,25 @@ struct NodeInfoCLI: AsyncParsableCommand {
                     print("\t\tHomepage: \(homepage)")
                 }
                 if let repository = nodeinfo.software.repository {
-                    print("\\t\tRepo: \(repository)")
+                    print("\t\tRepo: \(repository)")
                 }
 
                 print("\tProtocols: \(nodeinfo.protocols.map(\.debugDescription).joined(separator: ", "))")
 
                 print("\tUsage:")
-                if let total = nodeinfo.usage.users.total {
+                if let total = nodeinfo.usage.users.total?.value {
                     print("\t\tUsers (total): \(total)")
                 }
-                if let activeMonth = nodeinfo.usage.users.activeMonth {
+                if let activeMonth = nodeinfo.usage.users.activeMonth?.value {
                     print("\t\tUsers (active last month): \(activeMonth)")
                 }
-                if let activeHalfyear = nodeinfo.usage.users.activeHalfyear {
+                if let activeHalfyear = nodeinfo.usage.users.activeHalfyear?.value {
                     print("\t\tUsers (active last 6 months): \(activeHalfyear)")
                 }
-                if let localPosts = nodeinfo.usage.localPosts {
+                if let localPosts = nodeinfo.usage.localPosts?.value {
                     print("\t\tLocal posts: \(localPosts)")
                 }
-                if let localComments = nodeinfo.usage.localComments {
+                if let localComments = nodeinfo.usage.localComments?.value {
                     print("\t\tLocal posts: \(localComments)")
                 }
 

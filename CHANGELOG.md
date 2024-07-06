@@ -13,11 +13,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- none
+- Fixed output from the cli tool
 
 ### Removed
 
 - none
+
+## [1.2.0] - 2024-06-07
+
+### Added
+
+- Added Webmention to the list of known protocols.
+
+### Changed
+
+- Relaxed parsing integers to support wordpress platform.
+- Updated how we parse the protocols to handle names that are not part of the enum.
+
+### Removed
+
+- none
+
+## [1.1.2] - 2024-06-01
+
+### Changed
+
+- Fixed bundling privacy manifest file
 
 ## [1.1.1] - 2024-05-31
 
@@ -46,6 +67,9 @@ fail parsing nodeinfo, it should be acceptable.
 
 Initial release
 
-[unreleased]: https://github.com/shadone/DiasporaNodeInfo/compare/1.1.0...HEAD
+[unreleased]: https://github.com/shadone/DiasporaNodeInfo/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/shadone/DiasporaNodeInfo/compare/1.1.2...1.2.0
+[1.1.2]: https://github.com/shadone/DiasporaNodeInfo/compare/1.1.1...1.1.2
+[1.1.1]: https://github.com/shadone/DiasporaNodeInfo/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/shadone/DiasporaNodeInfo/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/shadone/DiasporaNodeInfo/releases/tag/1.0.0
