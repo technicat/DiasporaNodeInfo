@@ -5,6 +5,8 @@
 //  Created by Philip Chu on 6/8/24.
 //
 
+public typealias NodeInt = Int64
+
 /// common interface for v0-v2
 public protocol NodeInfoV2 {
   var version: String { get }
@@ -22,17 +24,17 @@ public protocol NodeInfoV2 {
   /// Whether this server allows open self-registration.
   var openRegistrations: Bool { get }
 
-  var totalUsers: UInt? { get }
+  var totalUsers: NodeInt? { get }
 
   /// The amount of users that signed in at least once in the last 180 days.
-  var activeHalfyear: UInt? { get }
+  var activeHalfyear: NodeInt? { get }
 
   /// The amount of users that signed in at least once in the last 30 days.
-  var activeMonth: UInt? { get }
+  var activeMonth: NodeInt? { get }
 
-  var localPosts: UInt? { get }
+  var localPosts: NodeInt? { get }
 
-  var localComments: UInt? { get }
+  var localComments: NodeInt? { get }
 
   /// Free form key value pairs for software specific values. Clients should not rely on any specific key present.
   ///
@@ -70,24 +72,24 @@ extension DiasporaNodeInfo.v2_0.NodeInfo: NodeInfoV2 {
     services?.outbound.map { $0.rawValue } ?? []
   }
 
-  public var totalUsers: UInt? {
-    usage.users.total
+  public var totalUsers: NodeInt? {
+      usage.users.total?.value
   }
 
-  public var activeHalfyear: UInt? {
-    usage.users.activeHalfyear
+  public var activeHalfyear: NodeInt? {
+      usage.users.activeHalfyear?.value
   }
 
-  public var activeMonth: UInt? {
-    usage.users.activeMonth
+  public var activeMonth: NodeInt? {
+      usage.users.activeMonth?.value
   }
 
-  public var localPosts: UInt? {
-    usage.localPosts
+  public var localPosts: NodeInt? {
+      usage.localPosts?.value
   }
 
-  public var localComments: UInt? {
-    usage.localComments
+  public var localComments: NodeInt? {
+      usage.localComments?.value
   }
 }
 
@@ -121,24 +123,24 @@ extension DiasporaNodeInfo.v2_1.NodeInfo: NodeInfoV2 {
     services?.outbound.map { $0.rawValue } ?? []
   }
 
-  public var totalUsers: UInt? {
-    usage.users.total
+  public var totalUsers: NodeInt? {
+      usage.users.total?.value
   }
 
-  public var activeHalfyear: UInt? {
-    usage.users.activeHalfyear
+  public var activeHalfyear: NodeInt? {
+      usage.users.activeHalfyear?.value
   }
 
-  public var activeMonth: UInt? {
-    usage.users.activeMonth
+  public var activeMonth: NodeInt? {
+      usage.users.activeMonth?.value
   }
 
-  public var localPosts: UInt? {
-    usage.localPosts
+  public var localPosts: NodeInt? {
+      usage.localPosts?.value
   }
 
-  public var localComments: UInt? {
-    usage.localComments
+  public var localComments: NodeInt? {
+      usage.localComments?.value
   }
 }
 
@@ -172,24 +174,24 @@ extension DiasporaNodeInfo.v2_2.NodeInfo: NodeInfoV2 {
     services?.outbound.map { $0.rawValue } ?? []
   }
 
-  public var totalUsers: UInt? {
-    usage.users.total
+  public var totalUsers: NodeInt? {
+      usage.users.total?.value
   }
 
-  public var activeHalfyear: UInt? {
-    usage.users.activeHalfyear
+  public var activeHalfyear: NodeInt? {
+      usage.users.activeHalfyear?.value
   }
 
-  public var activeMonth: UInt? {
-    usage.users.activeMonth
+  public var activeMonth: NodeInt? {
+      usage.users.activeMonth?.value
   }
 
-  public var localPosts: UInt? {
-    usage.localPosts
+  public var localPosts: NodeInt? {
+      usage.localPosts?.value
   }
 
-  public var localComments: UInt? {
-    usage.localComments
+  public var localComments: NodeInt? {
+      usage.localComments?.value
   }
 }
 
